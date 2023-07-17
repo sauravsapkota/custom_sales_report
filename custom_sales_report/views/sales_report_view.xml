@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <record id="view_sales_report_wizard_form" model="ir.ui.view">
+            <field name="name">sales.report.wizard.form</field>
+            <field name="model">sales.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Sales Report Wizard">
+                    <group>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                        <field name="customer_id"/>
+                    </group>
+                    <footer>
+                        <button string="Generate Report" type="object" name="generate_report" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_sales_report_wizard" model="ir.actions.act_window">
+            <field name="name">Sales Report Wizard</field>
+            <field name="res_model">sales.report.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="context">{"form_view_ref":"view_sales_report_wizard_form"}</field>
+        </record>
+        <menuitem id="menu_custom_sales_report" name="Sales Reporting" parent="base.menu_reporting" sequence="20"/>
+        <menuitem id="menu_sales_report_wizard" name="Sales Report" parent="menu_custom_sales_report" sequence="10"
+                  action="action_sales_report_wizard"/>
+    </data>
+</odoo>

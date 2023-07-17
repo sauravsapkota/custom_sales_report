@@ -1,0 +1,25 @@
+# Odoo-specific files and directories
+/__pycache__/
+/*.py[cod]
+/*.pyo
+/*.egg-info/
+/dist/
+/build/
+/openerp/
+/static/
+/database/
+/sessions/
+/odoo-bin
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-workspace
+*.swp
+*~
+
+# Compiled translations
+/i18n/*.mo
+
+# Log files
+/log/

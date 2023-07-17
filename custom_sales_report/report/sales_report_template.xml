@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+        <template id="report_sales_report_template">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <h2>Sales Report of <span t-field="o.partner_id.name"/> from <span t-field="data['from_date']"/> to <span t-field="data['to_date']"/></h2>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Sno</th>
+                                        <th>Source</th>
+                                        <th>Invoice No</th>
+                                        <th>Invoice Date</th>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Rate</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.order_line" t-as="line">
+                                        <td><span t-esc="line._sequence"/></td>
+                                        <td><span t-esc="o.source"/></td>
+                                        <td><span t-esc="o.name"/></td>
+                                        <td><span t-esc="o.date_order"/></td>
+                                        <td><span t-esc="line.product_id.name"/></td>
+                                        <td><span t-esc="line.product_uom_qty"/></td>
+                                        <td><span t-esc="line.price_unit"/></td>
+                                        <td><span t-esc="line.price_subtotal"/></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="7">Total Amount:</th>
+                                        <th><span t-esc="o.amount_total"/></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
